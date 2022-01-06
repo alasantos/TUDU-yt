@@ -1,0 +1,14 @@
+{
+  "name": "tudu",
+  "version": "1.0.0",
+  "description": "projeto para aprender nodeJS MVC",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "author": "Andre",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
