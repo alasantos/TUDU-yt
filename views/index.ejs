@@ -16,7 +16,7 @@
             <button id="addButton" type="submit">Adicionar</button>
           </form> 
       <% } else { %>
-          <form action="/" method="post">
+          <form action="/updateOne/<%= task._id %>" method="post">
             <input type="text" name="task" id="task" value="<%= task.task %>">
             <button id="addButton" type="submit">Atualizar</button>
           </form>

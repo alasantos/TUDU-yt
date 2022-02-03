@@ -1,11 +1,9 @@
-const req = require("express/lib/request");
-const res = require("express/lib/response");
 const Task = require("../models/Task");
 
 const getAllTasks = async (req, res) => {
   try {
     const tasklist = await Task.find();
-    return res.render("index", {tasklist, task: null});
+    return res.render("index", { task: null, tasklist });
   } catch (err) {
     res.status(500).send({ error: err.message });
   }
@@ -26,15 +24,29 @@ const createTask = async (req, res) => {
   }
 };
 
-const getById = async (req, res ) => {
-  const task = await Task.findOne( { _id: req.param.id });
-  const tasklist = await Task.find();
+const getById = async (req, res) => {
+  try {
+    const task = await Task.findOne({ _id: req.params.id });
+    const tasklist = await Task.find();
+    return res.render("index", { task, tasklist });
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+};
 
-  res.render("index", {task, tasklist});
-}
+const updateOneTask = async (req, res) => {
+  try {
+    const task = req.body;
+    await Task.updateOne({ _id: req.params.id }, task);
+    return res.redirect("/");
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+};
 
 module.exports = {
   getAllTasks,
   createTask,
   getById,
+  updateOneTask,
 };
