@@ -28,13 +28,28 @@
           <% tasklist.forEach( (task ) => { %>
           <li>
               <%= task.task %> | <%= task.date.toLocaleDateString( 'pt-BR') %>
-              <a href="/getById/<%= task._id%>">Editar</a>
-              <a href="">Apagar</a>
+              <a href="/getById/<%= task._id%>/updateOne">Editar</a>
+              <a href="/getById/<%= task._id%>/deleteOne">Apagar</a>
                 
             </li>
           <% }) %>
         </ul>
   </section>
+
+  <% if ( taskDelete != null ) { %>
+    
+  <section id="modal">
+    <div id="card">
+      <a href="/">x</a>
+      <h2>Confirmar</h2>
+      <hr>
+      <p>Deleta essa bagaça: <%= taskDelete.task %>?</p>
+      <a href="/">Não</a>
+      <a href="/deleteOne/<%= taskDelete._id%>">Sim</a>
+    </div>
+  </section>
+  <% } %>
+
     <script src="script.js"></script>
   </body>
 </html>
