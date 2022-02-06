@@ -47,17 +47,18 @@
 
   <% if ( taskDelete != null ) { %>
     
-  <section id="modal">
-    <div id="card">
-      <a href="/">x</a>
-      <h2>Confirmar</h2>
-      <hr>
-      <p>Deleta essa bagaça: <%= taskDelete.task %>?</p>
-      <a href="/">Não</a>
-      <a href="/deleteOne/<%= taskDelete._id%>">Sim</a>
-    </div>
-  </section>
+          <section id="modal">
+            <div id="card">
+              <a href="/">x</a>
+              <h2>Confirmar</h2>
+              <hr>
+              <p>Deleta essa bagaça: <%= taskDelete.task %>?</p>
+              <a href="/">Não</a>
+              <a href="/deleteOne/<%= taskDelete._id%>">Sim</a>
+            </div>
+          </section>
   <% } %>
+  
 
     <script src="script.js"></script>
   </body>
