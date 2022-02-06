@@ -4,21 +4,24 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
     <title>Tudulist</title>
   </head>
   <body>
     <header>
 
       <% if (task == null) { %>
+        <h1>TUDU LIST</h1>
           <form action="/create" method="post">
             <input type="text" name="task" id="task" placeholder="Nova tarefa">
             <button id="addButton" type="submit">Adicionar</button>
           </form> 
       <% } else { %>
+        <h1>EDITAR TUDU</h1>
           <form action="/updateOne/<%= task._id %>" method="post">
             <input type="text" name="task" id="task" value="<%= task.task %>">
-            <button id="addButton" type="submit">Atualizar</button>
+            <button id="updateButton" type="submit">Atualizar</button>
           </form>
       <% } %>
     </header>
@@ -27,9 +30,15 @@
         <ul>
           <% tasklist.forEach( (task ) => { %>
           <li>
-              <%= task.task %> | <%= task.date.toLocaleDateString( 'pt-BR') %>
-              <a href="/getById/<%= task._id%>/updateOne">Editar</a>
-              <a href="/getById/<%= task._id%>/deleteOne">Apagar</a>
+              <div>
+                  <a href="/"><%= task.task %> </a>
+                  <span>Em <%= task.date.toLocaleDateString( 'pt-BR') %></span>
+              </div>
+              <div>
+                <a href="/getById/<%= task._id%>/updateOne"><i class="bi bi-pencil-square"></i></a>
+                <a href="/getById/<%= task._id%>/deleteOne"><i class="bi bi-trash"></i></a>
+              </div>
+              
                 
             </li>
           <% }) %>
