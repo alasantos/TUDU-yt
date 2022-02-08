@@ -35,8 +35,8 @@
                   <span>Em <%= task.date.toLocaleDateString( 'pt-BR') %></span>
               </div>
               <div>
-                <a href="/getById/<%= task._id%>/updateOne"><i class="bi bi-pencil-square"></i></a>
-                <a href="/getById/<%= task._id%>/deleteOne"><i class="bi bi-trash"></i></a>
+                <a class="btnUpdate" href="/getById/<%= task._id%>/updateOne"><i class="bi bi-pencil-square"></i></a>
+                <a class="btnDelete" href="/getById/<%= task._id%>/deleteOne"><i class="bi bi-trash"></i></a>
               </div>
               
                 
@@ -49,12 +49,18 @@
     
           <section id="modal">
             <div id="card">
-              <a href="/">x</a>
-              <h2>Confirmar</h2>
+              <div id="head">
+                <h2>Confirmar</h2> 
+                <a id="close" href="/">x</a>
+
+              </div>
               <hr>
               <p>Deleta essa bagaça: <%= taskDelete.task %>?</p>
-              <a href="/">Não</a>
-              <a href="/deleteOne/<%= taskDelete._id%>">Sim</a>
+              <div id="btns">             
+                 <a id="btnNot" href="/">Não</a>
+                 <a id="btnYes" href="/deleteOne/<%= taskDelete._id%>">Sim</a>
+              </div>
+
             </div>
           </section>
   <% } %>
