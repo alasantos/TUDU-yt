@@ -7,7 +7,7 @@ const getAllTasks = async (req, res) => {
   try {
     setTimeout( () => {
                         message=""
-                      }, 2000
+                      }, 1000
               );
               
     const tasklist = await Task.find();
